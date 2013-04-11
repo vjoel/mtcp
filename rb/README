@@ -1,0 +1,5 @@
+Configure MTCP::MAXLEN as desired -- it's good to limit it to avoid reading huge messages due to garbage or malicious data.
+
+Works on linux and windows.
+
+Seems to interoperate fine with the C version.

@@ -1,0 +1,3 @@
+See the Makefile for build and test instructions.
+
+MTCP has worked on windows, but test_mtcp does not (it uses fork).
