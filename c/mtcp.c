@@ -101,7 +101,7 @@ static ssize_t recv_buf(int s, char *buf, size_t *bufpos, size_t len, int blocki
     
 #ifdef DEBUG
     if (*bufpos > len || *bufpos < 0) {
-        fprintf(stderr, "recv_buf: *bufpos = %d, buflen = %d\n", *bufpos, len);
+        fprintf(stderr, "recv_buf: *bufpos = %zu, buflen = %zu\n", *bufpos, len);
         exit(1);
     }
 #endif
@@ -128,7 +128,7 @@ static ssize_t send_buf(int s, const char *buf, size_t *bufpos, size_t len, int 
     
 #ifdef DEBUG
     if (*bufpos > len || *bufpos < 0) {
-        fprintf(stderr, "send_buf: *bufpos = %d, buflen = %d\n", *bufpos, len);
+        fprintf(stderr, "send_buf: *bufpos = %zu, buflen = %zu\n", *bufpos, len);
         exit(1);
     }
 #endif

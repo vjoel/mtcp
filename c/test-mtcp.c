@@ -64,7 +64,7 @@ void test_mtcp(test_param *ptp)
     pid_t child;
     struct sockaddr_in servaddr;
     
-    fprintf(stderr, "test_mtcp: started with port=%d, msglen=%d, count=%d, delay_ms=%d,\n",
+    fprintf(stderr, "test_mtcp: started with port=%d, msglen=%zu, count=%d, delay_ms=%d,\n",
             ptp->port, ptp->msglen, ptp->count, ptp->delay_ms);
     fprintf(stderr, "test_mtcp:              blocking=%d\n",
             ptp->blocking);
@@ -202,7 +202,7 @@ int test_message(char *ref, size_t reflen, char *msg, size_t msglen)
     char            output[100];
 
     if (msglen != reflen) {
-        fprintf(stderr, "receive_messages: got %d bytes, expecting %d\n",
+        fprintf(stderr, "receive_messages: got %zu bytes, expecting %zu\n",
             msglen, reflen);
         return 1;
     }
@@ -261,7 +261,7 @@ void receive_messages(int session, test_param *ptp)
                     
                     // This can still happen, even though select() succeeded,
                     // because mtcp_recv_message may not have gotten the whole msg.
-                    fprintf(stderr, "receive_messages: partial data (%d of %d): trying again\n",
+                    fprintf(stderr, "receive_messages: partial data (%zu of %zu): trying again\n",
                             pmts->bufpos, pmts->msglen ? pmts->msglen : 4);
                     continue;
                 }
@@ -309,7 +309,7 @@ void send_messages(int session, test_param *ptp)
         }
 
         if (result < ptp->msglen) {
-            fprintf(stderr, "send_messages: incomplete send: %d of %d bytes\n",
+            fprintf(stderr, "send_messages: incomplete send: %d of %zu bytes\n",
                     result, ptp->msglen);
             goto done;
         }

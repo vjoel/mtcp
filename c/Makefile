@@ -32,7 +32,7 @@ ARFLAGS = rcs
 
 OBJS = mtcp.o
 
-TESTS = test-mtcp.test
+TESTS = ./test-mtcp.test
 BINARIES = $(TESTS)
 
 all: depend tags $(BINARIES)
@@ -44,7 +44,7 @@ all: depend tags $(BINARIES)
 	$(CC) $(CFLAGS) $*.c -o $*.o
 
 test: $(TESTS)
-	run-tests.sh $(TESTS)
+	./run-tests.sh $(TESTS)
 
 docs: Doxyfile *.[ch]
 	@ echo "making docs"
@@ -56,7 +56,7 @@ tags: *.[ch]
 
 depend: *.[ch]
 	@ touch depend
-	@ makedepend -fdepend *.c 2>makedepend.err
+	@ $(CC) -MMD -MF depend *.c 2>makedepend.err
 
 clean:
 	\rm -f *.o *.err $(BINARIES) $(OBJS)
